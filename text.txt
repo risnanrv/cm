@@ -1,0 +1,123 @@
+convert this code into html and bootstrap.use css only if needed.
+no need chagne in design except :
+
+need like,i have a wooden block for show question and one for show question and answers
+
+when we click the question,show the second wooden block that contain ansers and quesion
+at that time the block with only question will hide
+
+also when another faq qustion clicks,need to make the previous opened question in initial model with quwation only
+
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqItems: FAQItem[] = [
+  {
+    question: "How do I create an account?",
+    answer:
+      "Click the 'Sign Up' button in the top right corner and follow the registration process.",
+  },
+  {
+    question: "How do I create an account?",
+    answer:
+      "Click the 'Sign Up' button in the top right corner and follow the registration process.",
+  },
+  {
+    question: "How do I create an account?",
+    answer:
+      "Click the 'Sign Up' button in the top right corner and follow the registration process.",
+  },
+  {
+    question: "I forgot my password. What should I do?",
+    answer:
+      "Click on 'Forgot Password' on the login page and follow the instructions sent to your email.",
+  },
+  {
+    question: "How do I update my profile information?",
+    answer:
+      "Go to 'My Account' settings and select 'Edit Profile' to make changes.",
+  },
+];
+
+export default function FAQSection() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const toggleFAQ = (index: number) => {
+    setActiveIndex(index === activeIndex ? null : index);
+  };
+
+  return (
+    <section className=" px-4">
+      <h2 className="text-3xl font-bold text-center text-black mb-10">
+        Frequently Asked Questions
+      </h2>
+<div className="relative flex justify-end m">
+          <Image
+            src="/faq.png"
+            alt="faq"
+            width={1250}
+            height={400}
+            className="object-contain "
+            priority
+          />
+        </div>
+      {/* Monkey + FAQ in same flex container */}
+      <div className="flex flex-col md:flex-row items-start justify-center gap-4 relative">
+        {/* Tree branch image on left */}
+        
+
+        {/* FAQ Cards */}
+        <div className=" w-full md:w-1/2 relative z-10">
+          {faqItems.map((item, index) => (
+            <div
+              key={index}
+              onClick={() => toggleFAQ(index)}
+              className="relative cursor-pointer rounded-xl overflow-hidden"
+            >
+              {/* Wood background */}
+              <Image
+                src="/wood.png"
+                alt={`${item.question} background`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 700px"
+                priority
+              />
+
+              {/* FAQ Content */}
+              <div className="relative z-20 p-6">
+                <h3 className="text-white text-lg md:text-xl font-semibold">
+                  {item.question}
+                </h3>
+                <AnimatePresence initial={false}>
+                  {activeIndex === index && (
+                    <motion.div
+                      key="answer"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <p className="mt-3 text-white text-sm md:text-base">
+                        {item.answer}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
