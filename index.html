@@ -27,18 +27,18 @@
     <link rel="stylesheet" href="home.css" />
   </head>
   <body>
+    <div id="navbar"></div>
 
-        <!-- Why Choose Us -->
-      <div style="margin-left: 7rem;">
-          <h2 class="fw-bold fs-1" style="color: #2a511b">
-            Why Choose Us?
-          </h2>
-          <p class="fs-4" style="color: #6b8e4e">
-            Unlock the Web3 journey with Crypto Monkey
-          </p>
-        </div>
+    <!-- Why Choose Us -->
+ 
     <section class="custom-bg py-5 px-3 position-relative">
       <div class="container">
+           
+      <h2 class="fw-bold fs-1" style="color: #2a511b">Why Choose Us?</h2>
+      <p class="fs-4 mb-5" style="color: #6b8e4e" >
+        Unlock the Web3 journey with Crypto Monkey
+      </p>
+    
         <div class="row g-0 position-relative">
           <!-- Card 1 -->
           <div class="col-md-6">
@@ -137,7 +137,7 @@
     </section>
     <!-- Faq -->
     <section class="px-3 py-5 custom-bg">
-      <div style="margin-right: 6rem;">
+      <div style="margin-right: 6rem">
         <h2 class="text-end fw-bold fs-1" style="color: #2a511b">
           Frequently Asked Questions
         </h2>
@@ -150,8 +150,8 @@
         <img
           src="/assets/faq-branch.png"
           alt="faq image"
-          class="img-fluid faq-img "
-          style="margin-right: -20px;"
+          class="img-fluid faq-img"
+          style="margin-right: -20px"
         />
       </div>
 
@@ -206,7 +206,6 @@
       </div>
     </section>
 
-
     <!-- Footer -->
     <footer class="footer-custom text-white py-4 px-4">
       <div class="container-xl">
@@ -214,13 +213,13 @@
           class="d-flex flex-column align-items-center justify-content-center text-center"
         >
           <div class="d-flex flex-column align-items-center">
-            <h2 class="display-4 fw-bold mb-2">Crypto Monkey</h2>
-            <p class="fs-4 opacity-90 max-w-md">
+            <h2 class="fw-bold">Crypto Monkey</h2>
+            <p class="text-center mb-2">
               Empowering Web3 explorers, one task at a time.
             </p>
           </div>
 
-          <div class="d-flex flex-wrap justify-content-center gap-4 mt-4">
+          <div class="d-flex flex-wrap justify-content-center gap-3 mt-3">
             <a
               href="https://t.me/crypto_monkeyy_channel"
               aria-label="Telegram Channel"
@@ -321,8 +320,7 @@
 
           <a
             href="mailto:cryptomonkbro@gmail.com"
-            class="btn text-white mt-5 px-4 py-2 rounded fw-medium"
-            style="background-color: #fea62c"
+            class="btncontact mt-4 text-decoration-none d-inline-flex align-items-center justify-content-center"
           >
             Contact Us
           </a>
@@ -361,6 +359,13 @@
           activeIndex = null;
         }
       }
+    </script>
+    <script>
+      fetch("navbar.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
     </script>
   </body>
 </html>

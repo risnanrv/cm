@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>4 Cards Per Row</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #f8f9fa;
+    }
+
+    .layout-wrapper {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      /* width: calc(100% - 190px); */
+      width: 100%;
+    }
+
+    .task-card {
+      /* background-color: #4caf50; */
+      width: 250px;
+    position: relative;
+    border-bottom: 5px solid #457a48;
+    border-right: 5px solid #457a48;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 8px;
+ 
+
+    }
+
+    .task-card-inner {
+      background-color: white;
+      padding: 16px 16px 12px 12px;
+      position: relative;
+      margin-left: 20px;
+      border-radius: 0;
+      border: 1px solid #D9D9D9;
+    }
+
+    .vertical-label {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 25px;
+      background-color: #235C38;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      writing-mode: vertical-lr;
+      text-orientation: mixed;
+      color: white;
+      font-size: 12px;
+      font-weight: 500;
+      height: 75px;
+      letter-spacing: 0.5px;
+      /* border-radius: 8px; */
+    }
+
+    .corner-badge {
+      position: absolute;
+      top: 0;
+      right:0;
+      width: 24px;
+      height: 24px;
+      background-color: #457A48;
+      border-radius: 0 0 0 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      z-index: 10;
+     
+    }
+
+    .task-icon {
+      width: 45px;
+      height: 45px;
+      background-color: #333;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .task-count {
+      font-size: 14px;
+      color: #666;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .task-title {
+      font-size: 21px;
+      font-weight: bold;
+      color: #333;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .progress-bar-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background-color: #e0e0e0;
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background-color: #4caf50;
+      width: 80%;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .ad-container {
+      width: 260px;
+      min-height: 600px;
+      background-color: #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    @media (max-width: 1200px) {
+      .layout-wrapper {
+        flex-direction: column;
+      }
+
+      .card-grid {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .ad-container {
+        width: 100%;
+        min-height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="layout-wrapper">
+    <!-- Cards -->
+    <div class="card-grid">
+      <!-- Repeat card 20+ times -->
+      <div class="task-card">
+        <div class="vertical-label">Layer 1</div>
+        <div class="corner-badge">✓</div>
+        <div class="task-card-inner">
+          <div class="d-flex align-items-center">
+            <div class="task-icon me-3">L</div>
+            <div class="flex-grow-1">
+              <p class="task-title">Layer Edge</p>
+              <p class="task-count">5 Tasks</p>
+            </div>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill"></div>
+          </div>
+        </div>
+      </div>
+        <div class="task-card">
+        <div class="vertical-label">Layer 1</div>
+        <div class="corner-badge">✓</div>
+        <div class="task-card-inner">
+          <div class="d-flex align-items-center">
+            <div class="task-icon me-3">L</div>
+            <div class="flex-grow-1">
+              <p class="task-title">Layer Edge</p>
+              <p class="task-count">5 Tasks</p>
+            </div>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill"></div>
+          </div>
+        </div>
+      </div>
+        <div class="task-card">
+        <div class="vertical-label">Layer 1</div>
+        <div class="corner-badge">✓</div>
+        <div class="task-card-inner">
+          <div class="d-flex align-items-center">
+            <div class="task-icon me-3">L</div>
+            <div class="flex-grow-1">
+              <p class="task-title">Layer Edge</p>
+              <p class="task-count">5 Tasks</p>
+            </div>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill"></div>
+          </div>
+        </div>
+      </div>
+        <div class="task-card">
+        <div class="vertical-label">Layer 1</div>
+        <div class="corner-badge">✓</div>
+        <div class="task-card-inner">
+          <div class="d-flex align-items-center">
+            <div class="task-icon me-3">L</div>
+            <div class="flex-grow-1">
+              <p class="task-title">Layer Edge</p>
+              <p class="task-count">5 Tasks</p>
+            </div>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill"></div>
+          </div>
+        </div>
+      </div>
+        <div class="task-card">
+        <div class="vertical-label">Layer 1</div>
+        <div class="corner-badge">✓</div>
+        <div class="task-card-inner">
+          <div class="d-flex align-items-center">
+            <div class="task-icon me-3">L</div>
+            <div class="flex-grow-1">
+              <p class="task-title">Layer Edge</p>
+              <p class="task-count">5 Tasks</p>
+            </div>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Duplicate above card 19 times to test layout -->
+    </div>
+
+    <!-- Ad Container -->
+    <div class="ad-container">Ad Space</div>
+  </div>
+
+</body>
+</html>

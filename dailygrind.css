@@ -1,0 +1,131 @@
+/* Header Section */
+.tag-btn {
+  border: 1px solid #4caf50;
+  border-bottom: 3px solid #457a48;
+  border-right: 3px solid #457a48;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-radius: 10px;
+}
+
+.tag-btn.active {
+  background-color: #457a48;
+  color: white;
+  border: 1px solid #4caf50;
+}
+
+.gm-btn {
+  background-color: #64ac61;
+  border: none;
+  border-bottom: 3px solid #457a48;
+  border-right: 3px solid #457a48;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.add-btn {
+  background-color: #fea62c;
+    border: none;
+
+  border-bottom: 3px solid #457a48;
+  border-right: 3px solid #457a48;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.search-box {
+  border-bottom: 3px solid #457a48;
+  border-right: 3px solid #457a48;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.search-box input {
+  border: 1px solid #4caf50;
+  border-right: none;
+  border-radius: 0;
+}
+
+.search-box button {
+  border: 1px solid #4caf50;
+  border-left: none;
+  background-color: #4caf50;
+  border-radius: 0 5px 0 0;
+}
+@media (max-width: 768px) {
+  .top-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+}
+
+/* Cards Section */
+
+.task-card {
+  width: 250px;
+  position: relative;
+  border-bottom: 5px solid #457a48;
+  border-right: 5px solid #457a48;
+  border-bottom-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.task-card-inner {
+  position: relative;
+  margin-left: 20px;
+  border-radius: 0;
+}
+
+.vertical-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  writing-mode: sideways-lr;
+  text-orientation: mixed;
+  height: 75px;
+  letter-spacing: 0.5px;
+}
+
+.corner-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 0 0 0 13px;
+  z-index: 10;
+}
+
+.task-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.progress-bar-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 80%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
