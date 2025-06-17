@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LayerEdge Grind Tracker</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f1f5f9;
+        color: #334155;
+      }
+
+      .custom-offcanvas-width {
+        width: 720px !important;
+        height: 90vh !important;
+        margin: 5vh auto;
+        border-radius: 16px;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+        border: none;
+        background-color: white;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .offcanvas-header {
+        background-color: #457a48;
+        color: white;
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .offcanvas-title {
+        font-weight: 600;
+        font-size: 1.25rem;
+        letter-spacing: -0.025em;
+      }
+
+      .icon-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        background-color: transparent;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        font-size: 0.95rem;
+      }
+
+      .icon-btn:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+        transform: scale(1.05);
+      }
+
+      .pin-btn.pinned {
+        color: #ffc107 !important;
+        border-color: #ffc107 !important;
+      }
+
+      .task-card {
+        position: relative;
+        padding: 0.85rem 1rem 1.25rem;
+        border: 2px solid #457a48;
+        border-radius: 2px;
+        background-color: #ffffff;
+      }
+
+      .checkmark-btn {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        border: none;
+        background: white;
+        color: #457a48;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top: 2px solid #457a48;
+        border-left: 2px solid #457a48;
+        transition: all 0.2s ease;
+      }
+
+      .checkmark-btn:hover {
+        background: #457a48;
+        color: white;
+      }
+
+      .checkmark-btn.completed {
+        background: #457a48;
+        color: white;
+      }
+
+    
+
+      .summary-box {
+        background-color: #f3f4f6; /* light gray background */
+        border-radius: 8px; /* slightly reduced for minimal style */
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+        padding: 1rem 1.25rem;
+        transition: transform 0.2s ease;
+      }
+
+      .summary-box:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(69, 122, 72, 0.15); /* green soft glow */
+      }
+
+      .summary-box .number {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-top: 0.4rem;
+        color: #457a48;
+      }
+
+      
+
+      .nav-tabs {
+        justify-content: center;
+        border-bottom: none;
+        margin-bottom: 1.5rem;
+        gap: 0.5rem;
+      }
+      .gm-btn {
+        background-color: #64ac61;
+        border: none;
+        border-radius: 3px;
+        border-bottom: 3px solid #457a48;
+        border-right: 3px solid #457a48;
+        border-bottom-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .add-btn {
+        background-color: #fea62c;
+        border: none;
+
+        border-bottom: 3px solid #457a48;
+        border-right: 3px solid #457a48;
+        border-bottom-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .nav-tabs .nav-link {
+        color: #6b7280; /* subtle gray text */
+        font-weight: 500;
+        border: none;
+        padding: 0.65rem 1.25rem;
+        border-radius: 6px; /* reduced radius */
+        transition: all 0.2s ease;
+        background-color: #f3f4f6; /* light bg for inactive tabs */
+      }
+
+      .nav-tabs .nav-link:hover {
+        color: #457a48;
+        background-color: rgba(69, 122, 72, 0.1); /* soft green tint */
+      }
+
+      .nav-tabs .nav-link.active {
+        background-color: #457a48;
+        color: white;
+        border-radius: 6px;
+        box-shadow: 0 3px 6px -1px rgba(69, 122, 72, 0.3),
+          0 2px 4px -1px rgba(69, 122, 72, 0.2);
+      }
+
+      .form-section {
+        border-top: 1px solid #e2e8f0;
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .form-control,
+      .form-select {
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        transition: all 0.2s ease;
+      }
+
+      .form-control:focus,
+      .form-select:focus {
+        border-color: #6366f1;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+      }
+
+      /* Animation for offcanvas */
+      .offcanvas.offcanvas-end {
+        transform: translateX(100%);
+      }
+
+      .offcanvas.show:not(.hiding) {
+        transform: none;
+      }
+
+      /* Task completion animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .task-card {
+        animation: fadeIn 0.3s ease-out forwards;
+      }
+      .task-section {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        transition: box-shadow 0.2s ease-in-out;
+      }
+
+      .task-section:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      }
+
+      .task-section input::placeholder {
+        color: #9ca3af;
+        font-size: 0.875rem;
+      }
+
+      .task-section input:focus {
+        border-color: #457a48;
+        box-shadow: 0 0 0 0.2rem rgba(69, 122, 72, 0.25);
+      }
+
+      .btn-success {
+        background-color: #457a48;
+        border: none;
+      }
+
+      .btn-success:hover {
+        background-color: #396239;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Trigger Button -->
+    <div class="container mt-5 text-center">
+      <button
+        class="btn btn-primary btn-lg rounded-3 px-4 py-2 shadow-sm"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#grindOffcanvas"
+      >
+        <i class="fas fa-fire me-2"></i>Open Daily Grind
+      </button>
+    </div>
+
+    <!-- Offcanvas Sidebar -->
+    <div
+      class="offcanvas offcanvas-end custom-offcanvas-width"
+      tabindex="-1"
+      id="grindOffcanvas"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">LayerEdge</h5>
+        <div class="d-flex align-items-center gap-2">
+          <button
+            class="btn btn-light rounded-circle border pin-btn"
+            style="
+              width: 36px;
+              height: 36px;
+              color: white;
+              border: 2px solid rgba(255, 255, 255, 0.6);
+              background: transparent;
+            "
+            id="pinBtn"
+          >
+            <i class="fas fa-thumbtack"></i>
+          </button>
+          <button
+            class="btn btn-light rounded-circle border"
+            style="
+              width: 36px;
+              height: 36px;
+              color: white;
+              border: 2px solid rgba(255, 255, 255, 0.6);
+              background: transparent;
+            "
+            id="deleteBtn"
+          >
+            <i class="fas fa-trash-alt"></i>
+          </button>
+          <button
+            class="btn btn-light rounded-circle border"
+            style="
+              width: 36px;
+              height: 36px;
+              color: white;
+              border: 2px solid rgba(255, 255, 255, 0.6);
+              background: transparent;
+            "
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="offcanvas-body p-4">
+        <!-- Tabs -->
+        <ul class="nav nav-tabs mb-4" id="grindTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="daily-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#daily"
+              type="button"
+              role="tab"
+            >
+              Daily Grinds
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="one-time-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#one-time"
+              type="button"
+              role="tab"
+            >
+              One-time Grinds
+            </button>
+          </li>
+        </ul>
+
+        <!-- Summary -->
+        <div class="d-flex justify-content-between mb-4 gap-3">
+          <div
+            class="card card-body summary-box flex-grow-1 text-center shadow-sm border-0"
+          >
+            <div>Total Tasks</div>
+            <div class="number">6</div>
+          </div>
+          <div
+            class="card card-body summary-box flex-grow-1 text-center shadow-sm border-0"
+          >
+            <div>Completed</div>
+            <div class="number text-success">4</div>
+          </div>
+          <div
+            class="card card-body summary-box flex-grow-1 text-center shadow-sm border-0"
+          >
+            <div>Pending</div>
+            <div class="number text-warning">2</div>
+          </div>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="grindTabContent">
+          <!-- Daily Grind -->
+          <div class="tab-pane fade show active" id="daily" role="tabpanel">
+            <div class="row g-4 mb-4">
+              <!-- Task Cards -->
+              <div class="col-12 col-md-4">
+                <div class="card card-body task-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <div class="card card-body task-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card card-body task-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card card-body task-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card card-body task-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card card-body task-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- One-time Grind  -->
+          <div class="tab-pane fade" id="one-time" role="tabpanel">
+            <div class="row g-3 mb-4">
+              <div class="col-12 col-md-4">
+                <div class="card card-body task-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card card-body task-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card card-body task-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card card-body task-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Grind Button -->
+        <div class="text-center mb-3" id="addGrindBtnWrapper">
+          <button class="add-btn px-4 py-2 fw-bold text-white" id="addGrindBtn">
+           Add Grind
+          </button>
+        </div>
+
+        <!-- Add Grind Form -->
+        <div class="col-md-8 mx-auto d-none" id="addGrindForm">
+          <div class="task-section p-4">
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control rounded-2 shadow-sm"
+                id="taskDescription"
+                placeholder="Task description"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <input
+                type="url"
+                class="form-control rounded-2 shadow-sm"
+                id="taskURL"
+                placeholder="Task URL (optional)"
+              />
+            </div>
+
+            <div
+              class="offcanvas-footer d-flex justify-content-center mt-4"
+              style="gap: 10px"
+            >
+              <button
+                type="button"
+                class="gm-btn px-4 py-2 fw-bold text-white"
+                id="cancelGrindBtn"
+              >
+                Cancel
+              </button>
+
+              <button
+                type="submit"
+                class="add-btn px-4 py-2 fw-bold text-white"
+                id="submitGrindBtn"
+              >
+                Add Grind
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap + JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // DOM Elements
+        const addBtn = document.getElementById("addGrindBtn");
+        const formCollapse = document.getElementById("addGrindForm");
+        const cancelBtn = document.getElementById("cancelGrindBtn");
+        const submitBtn = document.getElementById("submitGrindBtn");
+        const addWrapper = document.getElementById("addGrindBtnWrapper");
+        const pinBtn = document.getElementById("pinBtn");
+        const offcanvas = document.getElementById("grindOffcanvas");
+
+        // Function to show form and hide button
+        function showForm() {
+          formCollapse.classList.remove("d-none");
+          addWrapper.classList.add("d-none");
+        }
+
+        // Function to hide form and show button
+        function hideForm() {
+          formCollapse.classList.add("d-none");
+          addWrapper.classList.remove("d-none");
+        }
+
+        // Toggle add form
+        addBtn.addEventListener("click", showForm);
+
+        // Cancel button
+        cancelBtn.addEventListener("click", hideForm);
+
+        // Submit button
+        submitBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          const taskDescription = document.getElementById("taskDescription").value;
+          const taskURL = document.getElementById("taskURL").value;
+          
+          if (taskDescription.trim() === "") {
+            alert("Please enter a task description");
+            return;
+          }
+
+          // Here you would typically save the task
+          // For now, we'll just hide the form
+          hideForm();
+          
+          // Clear the form
+          document.getElementById("taskDescription").value = "";
+          document.getElementById("taskURL").value = "";
+          
+          alert("New grind added successfully!");
+        });
+
+        // Function to handle checkmark clicks
+        function handleCheckmarkClick(e) {
+          e.currentTarget.classList.toggle("completed");
+        }
+
+        // Attach click handlers to all checkmark buttons
+        document.querySelectorAll('.checkmark-btn').forEach(btn => {
+          btn.onclick = handleCheckmarkClick;
+        });
+
+        // Pin functionality
+        pinBtn.addEventListener("click", () => {
+          pinBtn.classList.toggle("pinned");
+        });
+
+        // Offcanvas events
+        offcanvas.addEventListener("show.bs.offcanvas", function() {
+          this.classList.add("showing");
+          // Reattach checkmark handlers when offcanvas is shown
+          document.querySelectorAll('.checkmark-btn').forEach(btn => {
+            btn.onclick = handleCheckmarkClick;
+          });
+        });
+
+        offcanvas.addEventListener("hidden.bs.offcanvas", function() {
+          this.classList.remove("showing");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -17,6 +17,11 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
 
   <body>
@@ -102,7 +107,11 @@
       <!-- Card Section -->
       <div class="d-flex gap-5 align-items-start">
         <div class="d-flex flex-wrap gap-3">
-          <div class="task-card">
+          <div
+            class="task-card"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#grindOffcanvas"
+          >
             <div
               style="background-color: #235c38"
               class="vertical-label d-flex align-items-center justify-content-center text-white small fw-medium"
@@ -138,7 +147,7 @@
             </div>
           </div>
 
-          <div class="task-card">
+          <div class="task-card"  data-bs-toggle="offcanvas" data-bs-target="#grindOffcanvas">
             <div
               style="background-color: #235c38"
               class="vertical-label d-flex align-items-center justify-content-center text-white small fw-medium"
@@ -174,7 +183,7 @@
             </div>
           </div>
 
-          <div class="task-card">
+          <div class="task-card"  data-bs-toggle="offcanvas" data-bs-target="#grindOffcanvas">
             <div
               style="background-color: #235c38"
               class="vertical-label d-flex align-items-center justify-content-center text-white small fw-medium"
@@ -210,7 +219,7 @@
             </div>
           </div>
 
-          <div class="task-card">
+          <div class="task-card"  data-bs-toggle="offcanvas" data-bs-target="#grindOffcanvas">
             <div
               style="background-color: #235c38"
               class="vertical-label d-flex align-items-center justify-content-center text-white small fw-medium"
@@ -246,7 +255,7 @@
             </div>
           </div>
 
-          <div class="task-card">
+          <div class="task-card"  data-bs-toggle="offcanvas" data-bs-target="#grindOffcanvas">
             <div
               style="background-color: #235c38"
               class="vertical-label d-flex align-items-center justify-content-center text-white small fw-medium"
@@ -282,7 +291,7 @@
             </div>
           </div>
 
-          <div class="task-card">
+          <div class="task-card"  data-bs-toggle="offcanvas" data-bs-target="#grindOffcanvas">
             <div
               style="background-color: #235c38"
               class="vertical-label d-flex align-items-center justify-content-center text-white small fw-medium"
@@ -318,7 +327,7 @@
             </div>
           </div>
 
-          <div class="task-card">
+          <div class="task-card"  data-bs-toggle="offcanvas" data-bs-target="#grindOffcanvas">
             <div
               style="background-color: #235c38"
               class="vertical-label d-flex align-items-center justify-content-center text-white small fw-medium"
@@ -354,7 +363,7 @@
             </div>
           </div>
 
-          <div class="task-card">
+          <div class="task-card"  data-bs-toggle="offcanvas" data-bs-target="#grindOffcanvas">
             <div
               style="background-color: #235c38"
               class="vertical-label d-flex align-items-center justify-content-center text-white small fw-medium"
@@ -486,16 +495,6 @@
                   class="offcanvas-footer d-flex justify-content-start mt-4"
                   style="gap: 10px"
                 >
-                  <!-- <button
-                    type="button"
-                    class="btn btn-outline-secondary me-2"
-                    data-bs-dismiss="offcanvas"
-                  >
-                    Cancel
-                  </button>
-                  <button type="submit" class="btn btn-primary">
-                    Create Grind
-                  </button> -->
                   <button
                     type="button"
                     class="gm-btn px-4 py-2 fw-bold text-white"
@@ -623,6 +622,383 @@
       </form>
     </div>
 
+    <!-- Grinds Offcanvas -->
+
+    <div
+      class="offcanvas offcanvas-end custom-offcanvas-width"
+      tabindex="-1"
+      id="grindOffcanvas"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">LayerEdge</h5>
+        <div class="d-flex align-items-center gap-2">
+          <button
+            class="btn btn-light rounded-circle border pin-btn"
+            style="
+              width: 36px;
+              height: 36px;
+              color: white;
+              border: 2px solid rgba(255, 255, 255, 0.6);
+              background: transparent;
+            "
+            id="pinBtn"
+          >
+            <i class="fas fa-thumbtack"></i>
+          </button>
+          <button
+            class="btn btn-light rounded-circle border"
+            style="
+              width: 36px;
+              height: 36px;
+              color: white;
+              border: 2px solid rgba(255, 255, 255, 0.6);
+              background: transparent;
+            "
+            id="deleteBtn"
+          >
+            <i class="fas fa-trash-alt"></i>
+          </button>
+          <button
+            class="btn btn-light rounded-circle border"
+            style="
+              width: 36px;
+              height: 36px;
+              color: white;
+              border: 2px solid rgba(255, 255, 255, 0.6);
+              background: transparent;
+            "
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="offcanvas-body p-4">
+        <!-- Tabs -->
+        <ul class="nav nav-tabs mb-4" id="grindTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="daily-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#daily"
+              type="button"
+              role="tab"
+            >
+              Daily Grinds
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="one-time-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#one-time"
+              type="button"
+              role="tab"
+            >
+              One-time Grinds
+            </button>
+          </li>
+        </ul>
+
+        <!-- Summary -->
+        <div class="d-flex justify-content-between mb-4 gap-3">
+          <div
+            class="card card-body summary-box flex-grow-1 text-center shadow-sm border-0"
+          >
+            <div>Total Tasks</div>
+            <div class="number">6</div>
+          </div>
+          <div
+            class="card card-body summary-box flex-grow-1 text-center shadow-sm border-0"
+          >
+            <div>Completed</div>
+            <div class="number text-success">4</div>
+          </div>
+          <div
+            class="card card-body summary-box flex-grow-1 text-center shadow-sm border-0"
+          >
+            <div>Pending</div>
+            <div class="number text-warning">2</div>
+          </div>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="grindTabContent">
+          <!-- Daily Grind -->
+          <div class="tab-pane fade show active" id="daily" role="tabpanel">
+            <div class="row g-4 mb-4">
+              <!-- Task Cards -->
+              <div class="col-12 col-md-4">
+                <div class="card card-body grind-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <div class="card card-body grind-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card card-body grind-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card card-body grind-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card card-body grind-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card card-body grind-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- One-time Grind  -->
+          <div class="tab-pane fade" id="one-time" role="tabpanel">
+            <div class="row g-3 mb-4">
+              <div class="col-12 col-md-4">
+                <div class="card card-body grind-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card card-body grind-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card card-body grind-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card card-body grind-card">
+                  <h6 class="fw-semibold mb-0">
+                    Complete at least 10 transaction
+                  </h6>
+
+                  <!-- quarter‑circle check‑mark -->
+                  <button class="btn checkmark-btn">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Grind Button -->
+        <div class="text-center mb-3" id="addGrindBtnWrapper">
+          <button class="add-btn px-4 py-2 fw-bold text-white" id="addGrindBtn">
+            Add Grind
+          </button>
+        </div>
+
+        <!-- Add Grind Form -->
+        <div class="col-md-8 mx-auto d-none" id="addGrindForm">
+          <div class="task-section p-4">
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control rounded-2 shadow-sm"
+                id="taskDescription"
+                placeholder="Task description"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <input
+                type="url"
+                class="form-control rounded-2 shadow-sm"
+                id="taskURL"
+                placeholder="Task URL (optional)"
+              />
+            </div>
+
+            <div
+              class="offcanvas-footer d-flex justify-content-center mt-4"
+              style="gap: 10px"
+            >
+              <button
+                type="button"
+                class="gm-btn px-4 py-2 fw-bold text-white"
+                id="cancelGrindBtn"
+              >
+                Cancel
+              </button>
+
+              <button
+                type="submit"
+                class="add-btn px-4 py-2 fw-bold text-white"
+                id="submitGrindBtn"
+              >
+                Add Grind
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // DOM Elements
+        const addBtn = document.getElementById("addGrindBtn");
+        const formCollapse = document.getElementById("addGrindForm");
+        const cancelBtn = document.getElementById("cancelGrindBtn");
+        const submitBtn = document.getElementById("submitGrindBtn");
+        const addWrapper = document.getElementById("addGrindBtnWrapper");
+        const pinBtn = document.getElementById("pinBtn");
+        const offcanvas = document.getElementById("grindOffcanvas");
+
+        // Function to show form and hide button
+        function showForm() {
+          formCollapse.classList.remove("d-none");
+          addWrapper.classList.add("d-none");
+        }
+
+        // Function to hide form and show button
+        function hideForm() {
+          formCollapse.classList.add("d-none");
+          addWrapper.classList.remove("d-none");
+        }
+
+        // Toggle add form
+        addBtn.addEventListener("click", showForm);
+
+        // Cancel button
+        cancelBtn.addEventListener("click", hideForm);
+
+        // Submit button
+        submitBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          const taskDescription =
+            document.getElementById("taskDescription").value;
+          const taskURL = document.getElementById("taskURL").value;
+
+          if (taskDescription.trim() === "") {
+            alert("Please enter a task description");
+            return;
+          }
+
+          // Here you would typically save the task
+          // For now, we'll just hide the form
+          hideForm();
+
+          // Clear the form
+          document.getElementById("taskDescription").value = "";
+          document.getElementById("taskURL").value = "";
+
+          alert("New grind added successfully!");
+        });
+
+        // Function to handle checkmark clicks
+        function handleCheckmarkClick(e) {
+          e.currentTarget.classList.toggle("completed");
+        }
+
+        // Attach click handlers to all checkmark buttons
+        document.querySelectorAll(".checkmark-btn").forEach((btn) => {
+          btn.onclick = handleCheckmarkClick;
+        });
+
+        // Pin functionality
+        pinBtn.addEventListener("click", () => {
+          pinBtn.classList.toggle("pinned");
+        });
+
+        // Offcanvas events
+        offcanvas.addEventListener("show.bs.offcanvas", function () {
+          this.classList.add("showing");
+          // Reattach checkmark handlers when offcanvas is shown
+          document.querySelectorAll(".checkmark-btn").forEach((btn) => {
+            btn.onclick = handleCheckmarkClick;
+          });
+        });
+
+        offcanvas.addEventListener("hidden.bs.offcanvas", function () {
+          this.classList.remove("showing");
+        });
+      });
+    </script>
     <script
       src="https://kit.fontawesome.com/a076d05399.js"
       crossorigin="anonymous"
