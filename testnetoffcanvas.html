@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Testnet Dashboard</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f5f7fa;
+        color: #343a40;
+      }
+      .testnet-card-header {
+        background: linear-gradient(135deg, #457a48, #5a9a5d);
+        color: #f8f9fa;
+        position: relative;
+        overflow: hidden;
+        padding: 1.5rem;
+      }
+      .testnet-card-header::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+        transform: rotate(30deg);
+      }
+      .badge-click {
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .badge-click:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+      .custom-offcanvas-width {
+        width: 850px !important;
+        height: 90vh !important;
+        margin: 5vh auto !important;
+        border-radius: 16px !important;
+        border: none !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        background-color: white !important;
+      }
+      .custom-offcanvas-header {
+        background: #457a48;
+        color: #f8f9fa;
+        border-bottom: none;
+        position: relative;
+        overflow: hidden;
+        padding: 1.5rem 2rem;
+      }
+      .custom-offcanvas-title {
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: -0.5px;
+        position: relative;
+        z-index: 1;
+      }
+      .custom-header-btn {
+        width: 36px !important;
+        height: 36px !important;
+        color: #f8f9fa !important;
+        border: 2px solid rgba(255, 255, 255, 0.6) !important;
+        background: transparent !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        position: relative;
+        z-index: 1;
+      }
+      .tag {
+        background: white;
+        color: #457a48;
+      }
+      .custom-header-btn:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+        transform: rotate(90deg);
+      }
+      .add-btn {
+        background-color: #fea62c;
+        border: none;
+        border-bottom: 3px solid #457a48;
+        border-right: 3px solid #457a48;
+        border-bottom-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      /* Animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .task-preview-card {
+        animation: fadeIn 0.4s ease-out forwards;
+      }
+      .task-preview-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .task-preview-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .task-preview-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .task-preview-card:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .testnet-detail-item {
+        animation: fadeIn 0.3s ease-out forwards;
+      }
+      .testnet-detail-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .testnet-detail-item:nth-child(2) {
+        animation-delay: 0.15s;
+      }
+      .testnet-detail-item:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+      .testnet-detail-item:nth-child(4) {
+        animation-delay: 0.25s;
+      }
+      @media (max-width: 992px) {
+        .custom-offcanvas-width {
+          width: 90vw !important;
+          margin: 5vh auto !important;
+        }
+      }
+      @media (max-width: 768px) {
+        .custom-offcanvas-width {
+          height: 95vh !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center mb-5">
+            <h1 class="fw-bold mb-3">Testnet Dashboard</h1>
+            <p class="lead text-muted">
+              Explore available blockchain testnets and participate
+            </p>
+          </div>
+          <div class="col-lg-8">
+            <!-- Main Testnet Card -->
+            <div
+              class="card testnet-card border-0 rounded-4 shadow-sm mb-4"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#testnetOffcanvas"
+              aria-controls="testnetOffcanvas"
+              style="overflow: hidden;"
+            >
+              <div class="testnet-card-header">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h4 class="mb-1 fw-bold">
+                      <i class="fas fa-layer-group me-2"></i>
+                      Layer Edge Testnet
+                    </h4>
+                    <p class="mb-0 opacity-75">
+                      Advanced Layer 2 Scaling Solution
+                    </p>
+                  </div>
+                  <div class="badge bg-white text-primary px-3 py-2">
+                    <i class="fas fa-bolt me-1"></i>
+                    Active
+                  </div>
+                </div>
+              </div>
+              <div class="testnet-card-body p-4">
+                <div class="row">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="d-flex align-items-center mb-3">
+                      <div class="bg-light rounded p-2 me-3">
+                        <i class="fas fa-tag text-primary"></i>
+                      </div>
+                      <div>
+                        <small class="text-muted d-block">Category</small>
+                        <strong>Layer 2 Protocol</strong>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <div class="bg-light rounded p-2 me-3">
+                        <i class="fas fa-wallet text-primary"></i>
+                      </div>
+                      <div>
+                        <small class="text-muted d-block">Funding</small>
+                        <strong>50,000 USDC</strong>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-3">
+                      <div class="bg-light rounded p-2 me-3">
+                        <i class="fas fa-clock text-primary"></i>
+                      </div>
+                      <div>
+                        <small class="text-muted d-block">Duration</small>
+                        <strong>4 weeks</strong>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <div class="bg-light rounded p-2 me-3">
+                        <i class="fas fa-tasks text-primary"></i>
+                      </div>
+                      <div>
+                        <small class="text-muted d-block">Tasks</small>
+                        <strong>12 available</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center mt-4">
+                  <span class="badge badge-click px-4 py-2">
+                    <i class="fas fa-eye me-2"></i>
+                    View Testnet Details
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Offcanvas -->
+    <div
+      class="offcanvas offcanvas-end custom-offcanvas-width"
+      tabindex="-1"
+      id="testnetOffcanvas"
+      aria-labelledby="testnetOffcanvasLabel"
+    >
+      <!-- Header -->
+      <div class="offcanvas-header custom-offcanvas-header d-flex justify-content-between align-items-start">
+        <div>
+          <h5 class="offcanvas-title custom-offcanvas-title" id="testnetOffcanvasLabel">
+            Layer Edge Testnet
+          </h5>
+          <div>
+            <span class="badge tag">Layer 1</span>
+            <span class="badge tag">Mainnet</span>
+            <span class="badge tag">Time Sensitive</span>
+            <span class="badge tag">High Priority</span>
+          </div>
+        </div>
+        <div class="d-flex gap-4 align-items-center">
+          <button class="add-btn px-4 py-2 fw-bold text-white">
+            Add To Daily <i class="fas fa-plus"></i>
+          </button>
+          <button
+            class="btn btn-light rounded-circle border custom-header-btn"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Body -->
+      <div class="offcanvas-body custom-offcanvas-body p-4">
+        <div class="row h-100">
+          <!-- Left Column - Testnet Details -->
+          <div class="col-md-6 pe-4">
+            <h6 class="section-header d-flex align-items-center mb-4">
+              <span class="me-2" style="width:4px;height:16px;background:#457a48;border-radius:2px;display:inline-block;"></span>
+              Testnet Details
+            </h6>
+            <div class="testnet-detail-item mb-4 pb-3">
+              <div class="testnet-detail-label fw-semibold text-uppercase text-secondary mb-1" style="font-size:0.85rem;letter-spacing:0.5px;">Testnet Name</div>
+              <div class="testnet-detail-value fs-5 fw-medium text-dark">Layer Edge Protocol</div>
+            </div>
+            <div class="testnet-detail-item mb-4 pb-3">
+              <div class="testnet-detail-label fw-semibold text-uppercase text-secondary mb-1" style="font-size:0.85rem;letter-spacing:0.5px;">Description</div>
+              <div class="task-preview-text">This is a decentralized Bitcoin interoperability protocol enabling BTC in DeFi on the SUI</div>
+            </div>
+            <div class="testnet-detail-item mb-4 pb-3">
+              <div class="testnet-detail-label fw-semibold text-uppercase text-secondary mb-1" style="font-size:0.85rem;letter-spacing:0.5px;">Total Funding</div>
+              <div class="testnet-detail-value fs-5 fw-medium text-dark">
+                <i class="fas fa-dollar-sign text-success me-2"></i>
+                10 Million
+              </div>
+            </div>
+            <div class="testnet-detail-item mb-4 pb-3">
+              <div class="testnet-detail-label fw-semibold text-uppercase text-secondary mb-1" style="font-size:0.85rem;letter-spacing:0.5px;">Total Time</div>
+              <div class="testnet-detail-value fs-5 fw-medium text-dark">
+                <i class="fas fa-clock text-warning me-2"></i>
+                10 minutes
+              </div>
+            </div>
+            <div class="testnet-detail-item mb-4 pb-3">
+              <div class="testnet-detail-label fw-semibold text-uppercase text-secondary mb-1" style="font-size:0.85rem;letter-spacing:0.5px;">Total Tasks</div>
+              <div class="testnet-detail-value fs-5 fw-medium text-dark">
+                <i class="fas fa-tasks text-info me-2"></i>
+                4
+              </div>
+            </div>
+            <div class="testnet-detail-item">
+              <div class="testnet-detail-label fw-semibold text-uppercase text-secondary mb-1" style="font-size:0.85rem;letter-spacing:0.5px;">Status</div>
+              <div class="testnet-detail-value fs-5 fw-medium text-dark">
+                <span class="badge bg-success">
+                  <i class="fas fa-play me-1"></i>
+                  Active
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- Right Column - Task Preview -->
+          <div class="col-md-6">
+            <h6 class="section-header d-flex align-items-center mb-4">
+              <span class="me-2" style="width:4px;height:16px;background:#457a48;border-radius:2px;display:inline-block;"></span>
+              Available Tasks
+            </h6>
+            <div class="task-preview-card bg-light p-3 border border-2 border-success rounded-2 mb-3 shadow-sm">Do 10 transactions</div>
+            <div class="task-preview-card bg-light p-3 border border-2 border-success rounded-2 mb-3 shadow-sm">Join the Discord server</div>
+            <div class="task-preview-card bg-light p-3 border border-2 border-success rounded-2 mb-3 shadow-sm">Add Liquidity</div>
+            <div class="task-preview-card bg-light p-3 border border-2 border-success rounded-2 mb-3 shadow-sm">Claim faucet</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Add animation class when offcanvas is shown
+      document
+        .getElementById("testnetOffcanvas")
+        .addEventListener("show.bs.offcanvas", function () {
+          this.classList.add("showing");
+        });
+      // Remove animation class when offcanvas is hidden
+      document
+        .getElementById("testnetOffcanvas")
+        .addEventListener("hidden.bs.offcanvas", function () {
+          this.classList.remove("showing");
+        });
+    </script>
+  </body>
+</html>

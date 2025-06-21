@@ -1,163 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bootstrap 5 Offcanvas Sidebar</title>
-    <!-- Bootstrap 5 CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      .custom-offcanvas-width {
-        width: 700px !important;
-        /* max-width: 90vw; */
-        height: 90vh !important; /* Make it 80% of the viewport height */
-        margin-top: 5vh; /* Push down from top */
-        margin-bottom: 5vh; /* Push up from bottom */
-        border-radius: 10px; /* Optional: rounded edges */
-        overflow-y: auto;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container py-5">
-      <!-- Trigger Button -->
-      <button
-        class="btn btn-warning"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#addGrindSidebar"
-      >
-        ADD YOUR GRIND
-      </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Card Toggle</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+  />
+
+  <style>
+    .card-custom.added {
+      background-color: #d8fdd8 !important; /* Light green */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="d-flex">
+    <!-- Left: Cards Container -->
+    <div class="flex-grow-1 me-4 p-4">
+      <div class="d-flex gap-4 flex-wrap">
+        <!-- Card Template -->
+        <div class="card card-custom shadow-sm border position-relative" style="width: 220px; background-color: #fff; transition: background-color 0.3s;">
+          <!-- Plus button -->
+          <div class="action-btn btn btn-success rounded-circle d-flex align-items-center justify-content-center position-absolute top-0 end-0 m-2 p-0" style="width: 30px; height: 30px; z-index:2;" onclick="toggleAdd(this)">
+            <i class="bi bi-plus-lg"></i>
+          </div>
+          <div class="card-body position-relative z-1">
+            <div class="d-flex align-items-center mb-1">
+              <div class="me-2">
+                <img
+                  src="/assets/layeredge.png"
+                  alt="Layer Icon"
+                  class="img-fluid"
+                  style="width: 43px; height: 43px; object-fit: contain"
+                />
+              </div>
+              <div>
+                <div class="fw-bold text-dark fs-5">LayerEdge</div>
+                <div class="small text-secondary">5 Tasks</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Duplicate card block as needed for more cards -->
+        <div class="card card-custom shadow-sm border position-relative" style="width: 220px; background-color: #fff; transition: background-color 0.3s;">
+          <div class="action-btn btn btn-success rounded-circle d-flex align-items-center justify-content-center position-absolute top-0 end-0 m-2 p-0" style="width: 30px; height: 30px; z-index:2;" onclick="toggleAdd(this)">
+            <i class="bi bi-plus-lg"></i>
+          </div>
+          <div class="card-body position-relative z-1">
+            <div class="d-flex align-items-center mb-1">
+              <div class="me-2">
+                <img
+                  src="/assets/layeredge.png"
+                  alt="Layer Icon"
+                  class="img-fluid"
+                  style="width: 43px; height: 43px; object-fit: contain"
+                />
+              </div>
+              <div>
+                <div class="fw-bold text-dark fs-5">LayerEdge</div>
+                <div class="small text-secondary">5 Tasks</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card card-custom shadow-sm border position-relative" style="width: 220px; background-color: #fff; transition: background-color 0.3s;">
+          <div class="action-btn btn btn-success rounded-circle d-flex align-items-center justify-content-center position-absolute top-0 end-0 m-2 p-0" style="width: 30px; height: 30px; z-index:2;" onclick="toggleAdd(this)">
+            <i class="bi bi-plus-lg"></i>
+          </div>
+          <div class="card-body position-relative z-1">
+            <div class="d-flex align-items-center mb-1">
+              <div class="me-2">
+                <img
+                  src="/assets/layeredge.png"
+                  alt="Layer Icon"
+                  class="img-fluid"
+                  style="width: 43px; height: 43px; object-fit: contain"
+                />
+              </div>
+              <div>
+                <div class="fw-bold text-dark fs-5">LayerEdge</div>
+                <div class="small text-secondary">5 Tasks</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card card-custom shadow-sm border position-relative" style="width: 220px; background-color: #fff; transition: background-color 0.3s;">
+          <div class="action-btn btn btn-success rounded-circle d-flex align-items-center justify-content-center position-absolute top-0 end-0 m-2 p-0" style="width: 30px; height: 30px; z-index:2;" onclick="toggleAdd(this)">
+            <i class="bi bi-plus-lg"></i>
+          </div>
+          <div class="card-body position-relative z-1">
+            <div class="d-flex align-items-center mb-1">
+              <div class="me-2">
+                <img
+                  src="/assets/layeredge.png"
+                  alt="Layer Icon"
+                  class="img-fluid"
+                  style="width: 43px; height: 43px; object-fit: contain"
+                />
+              </div>
+              <div>
+                <div class="fw-bold text-dark fs-5">LayerEdge</div>
+                <div class="small text-secondary">5 Tasks</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card card-custom shadow-sm border position-relative" style="width: 220px; background-color: #fff; transition: background-color 0.3s;">
+          <div class="action-btn btn btn-success rounded-circle d-flex align-items-center justify-content-center position-absolute top-0 end-0 m-2 p-0" style="width: 30px; height: 30px; z-index:2;" onclick="toggleAdd(this)">
+            <i class="bi bi-plus-lg"></i>
+          </div>
+          <div class="card-body position-relative z-1">
+            <div class="d-flex align-items-center mb-1">
+              <div class="me-2">
+                <img
+                  src="/assets/layeredge.png"
+                  alt="Layer Icon"
+                  class="img-fluid"
+                  style="width: 43px; height: 43px; object-fit: contain"
+                />
+              </div>
+              <div>
+                <div class="fw-bold text-dark fs-5">LayerEdge</div>
+                <div class="small text-secondary">5 Tasks</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Offcanvas Sidebar -->
+    <!-- Right: Fixed Sidebar -->
     <div
-      class="offcanvas offcanvas-end custom-offcanvas-width"
-      tabindex="-1"
-      id="addGrindSidebar"
+      class="bg-light border rounded-3 p-4 text-center fw-bold fs-5"
+      style="width: 303px; height: 100vh;"
     >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title">Add new grind</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="offcanvas-body">
-        <form>
-          <div class="row">
-            <!-- Left Section -->
-            <div class="col-md-6">
-              <!-- Project Name -->
-              <div class="mb-3">
-                <label for="projectName" class="form-label">Project name</label>
-                <input type="text" class="form-control" id="projectName" />
-              </div>
-
-              <!-- Total Time Required -->
-              <div class="mb-3">
-                <label for="timeRequired" class="form-label"
-                  >Total time required</label
-                >
-                <select class="form-select" id="timeRequired">
-                  <option selected>Select time</option>
-                  <option value="1">1 hour</option>
-                  <option value="2">2 hours</option>
-                  <option value="3">3 hours</option>
-                  <option value="4">4+ hours</option>
-                </select>
-              </div>
-
-              <!-- Category -->
-              <div class="mb-3">
-                <label for="category" class="form-label">Category</label>
-                <select class="form-select" id="category">
-                  <option selected>Select category</option>
-                  <option value="work">Work</option>
-                  <option value="personal">Personal</option>
-                  <option value="learning">Learning</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <!-- Radio Buttons -->
-              <div class="mb-3">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="grindType"
-                    id="dailyGrind"
-                    checked
-                  />
-                  <label class="form-check-label" for="dailyGrind">
-                    Daily Grind
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="grindType"
-                    id="oneTimeGrind"
-                  />
-                  <label class="form-check-label" for="oneTimeGrind">
-                    One Time Grind
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right Section -->
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label class="form-label">Task 1</label>
-                <div class="mb-2">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Project name"
-                  />
-                </div>
-                <div class="mb-2">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Task URL"
-                  />
-                </div>
-              </div>
-
-              <button type="button" class="btn btn-success">
-                Add new task
-              </button>
-            </div>
-          </div>
-
-          <!-- Bottom Buttons -->
-          <div class="row mt-4">
-            <div class="col-6">
-              <button
-                type="button"
-                class="btn btn-danger"
-                data-bs-dismiss="offcanvas"
-              >
-                Cancel
-              </button>
-              <button type="submit" class="btn btn-success">Submit</button>
-            </div>
-            <div class="col-6"></div>
-          </div>
-        </form>
-      </div>
+      Sidebar Info
     </div>
+  </div>
 
-    <!-- Bootstrap 5 JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Toggle Button Logic -->
+  <script>
+    function toggleAdd(button) {
+      const card = button.closest(".card-custom");
+      const icon = button.querySelector("i");
+      card.classList.toggle("added");
+      if (card.classList.contains("added")) {
+        icon.classList.remove("bi-plus-lg");
+        icon.classList.add("bi-check-lg");
+      } else {
+        icon.classList.remove("bi-check-lg");
+        icon.classList.add("bi-plus-lg");
+      }
+    }
+  </script>
+</body>
 </html>
+
+<!-- 
+data-bs-toggle="offcanvas"
+            data-bs-target="#grindOffcanvas" -->

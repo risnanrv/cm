@@ -1,0 +1,195 @@
+    body {
+      background: #f2fdf6;
+      font-family: 'Segoe UI', sans-serif;
+        /* overflow-y: hidden; */
+
+    }
+.dashboard-heading{
+  color: #2e3c2f; 
+  margin-left: 0.7rem;
+      margin-top: 1rem;
+
+}
+
+
+    /* Shared Card Styles */
+    .stat-card, .profile-card, .rank-card, .chart-container {
+      background: white;
+      border-radius: 12px;
+      padding:0.7rem 0.9rem;
+
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .stat-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+
+    .stat-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-value {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #63963D;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: #4D503E;
+    }
+
+    .stat-icon {
+      font-size: 2.2rem;
+      color: #63963D;
+    }
+
+    .profile-card, .rank-card {
+      text-align: center;
+      height: 100%;
+              padding-top: 2rem;
+
+    }
+
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #e8f5e9;
+      /* margin-bottom: 0.5rem; */
+
+    }
+
+    .profile-name {
+      font-size:1.9rem;
+      font-weight: 700;
+      color: #63963D;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-level {
+      display: inline-block;
+      background-color: #63963D;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .rank-icon {
+      font-size: 3rem;
+      color: #63963D;
+      margin-bottom: 1.9rem;
+    }
+
+    .rank-value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #63963D;
+      margin-bottom: 0.25rem;
+    }
+
+    .chart-container {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+}
+
+.chart-inner {
+  display: flex;
+  align-items: flex-end;
+}
+
+.chart-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 240px;
+  padding-right: 12px;
+  border-right: 1px solid #ccc;
+  margin-right: 12px;
+  font-size: 0.75rem;
+  color: #666;
+  text-align: right;
+}
+
+.y-label {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.chart-graph {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  height: 240px;
+}
+
+.chart-bar {
+  width: 48px;
+  background-color: #63963D;
+  border-radius: 6px 6px 0 0;
+  transition: all 0.3s ease;
+}
+
+.chart-bar:hover {
+  background-color: #4e7c2e;
+  transform: scaleY(1.05);
+}
+
+.chart-labels {
+  display: flex;
+  justify-content: flex-start;
+  gap: 7px;
+  margin-top: 0.5rem;
+}
+
+.chart-label {
+  width: 53px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #3e4a2f;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+
+    .ads-sidebar {
+         background: #fff;
+    height: 90%;
+    min-height: 100vh;
+    border-radius: 12px;
+    width: 200px;
+    margin-top: 1.79rem;
+    }
+  
+        
+
+    @media (max-width: 992px) {
+      .chart-container {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+.dashboard-bg {
+  background: url('assets/dashbord-bg.svg') no-repeat top center;
+  background-size: 100% auto;
+  width: 100%;
+  min-height: 100vh;
+}
