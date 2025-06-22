@@ -98,8 +98,8 @@
         <div class="card card-custom shadow-sm border position-relative"
              style="width: 220px; background-color: #fff; transition: background-color 0.3s; cursor: pointer;"
              data-bs-toggle="offcanvas"
-             data-bs-target="#testnetOffcanvas"
-             aria-controls="testnetOffcanvas"
+         data-bs-target="#testnetOffcanvas"
+              aria-controls="testnetOffcanvas"    
         >
           <!-- Plus button -->
           <div class="action-btn btn btn-success rounded-circle d-flex align-items-center justify-content-center position-absolute top-0 end-0 m-2 p-0"
@@ -259,24 +259,24 @@
       aria-labelledby="testnetOffcanvasLabel"
     >
       <!-- Header -->
-      <div class="offcanvas-header custom-offcanvas-header d-flex justify-content-between align-items-start">
-        <div>
-          <h5 class="offcanvas-title custom-offcanvas-title" id="testnetOffcanvasLabel">
+      <div class="offcanvas-header custom-offcanvas-header d-flex flex-wrap flex-md-nowrap justify-content-between align-items-center" style="gap: 1.5rem;">
+        <div class="flex-grow-1" style="min-width:0;">
+          <h5 class="offcanvas-title custom-offcanvas-title mb-2" id="testnetOffcanvasLabel">
             Layer Edge Testnet
           </h5>
-          <div>
+          <div class="d-flex flex-wrap gap-2 tag-container" style="max-width:100%;">
             <span class="badge tag">Layer 1</span>
             <span class="badge tag">Mainnet</span>
             <span class="badge tag">Time Sensitive</span>
             <span class="badge tag">High Priority</span>
           </div>
         </div>
-        <div class="d-flex gap-4 align-items-center">
+        <div class="d-flex flex-column flex-md-row gap-2 align-items-center ms-md-4 mt-3 mt-md-0">
           <button class="add-btn px-4 py-2 fw-bold text-white">
             Add To Daily <i class="fas fa-plus"></i>
           </button>
           <button
-            class="btn btn-light rounded-circle border custom-header-btn"
+            class="btn btn-light rounded-circle border custom-header-btn ms-md-2"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
           >
@@ -284,6 +284,18 @@
           </button>
         </div>
       </div>
+      <style>
+        @media (max-width: 600px) {
+          .offcanvas-header .tag-container {
+            max-width: 100vw;
+            flex-wrap: wrap;
+          }
+        }
+        .offcanvas-header .tag-container {
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+      </style>
       <!-- Body -->
       <div class="offcanvas-body custom-offcanvas-body p-4">
         <div class="row h-100">
@@ -301,6 +313,30 @@
               <div class="testnet-detail-label fw-semibold text-uppercase text-secondary mb-1" style="font-size:0.85rem;letter-spacing:0.5px;">Description</div>
               <div class="task-preview-text">This is a decentralized Bitcoin interoperability protocol enabling BTC in DeFi on the SUI</div>
             </div>
+            <div class="testnet-detail-item mb-4 pb-3">
+  <div class="testnet-detail-label fw-semibold text-uppercase text-secondary mb-1" style="font-size:0.85rem;letter-spacing:0.5px;">
+    Official Channels
+  </div>
+  <div class="testnet-detail-value fs-5 fw-medium text-dark">
+    <!-- Social Icons -->
+    <div class="d-flex gap-2 mt-2">
+      <!-- X (Twitter) -->
+      <a href="https://x.com" target="_blank" class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width:36px;height:36px;background:#000;color:#fff;">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+  <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+</svg>      </a>
+      <!-- Discord -->
+      <a href="https://discord.com" target="_blank" class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width:36px;height:36px;background:#5865F2;color:#fff;">
+        <i class="bi bi-discord"></i>
+      </a>
+      <!-- Website -->
+      <a href="https://example.com" target="_blank" class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width:36px;height:36px;background:#007bff;color:#fff;">
+        <i class="bi bi-globe"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
             <div class="testnet-detail-item mb-4 pb-3">
               <div class="testnet-detail-label fw-semibold text-uppercase text-secondary mb-1" style="font-size:0.85rem;letter-spacing:0.5px;">Total Funding</div>
               <div class="testnet-detail-value fs-5 fw-medium text-dark">

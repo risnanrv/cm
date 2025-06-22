@@ -99,75 +99,45 @@
 
 /* new grind form */
 
-body {
-  font-family: "Poppins", sans-serif;
-  background-color: #f8f9fa;
-  font-size: 14px;
-}
 
-/* .custom-offcanvas-width {
-  width: 680px !important;
-  height: 88vh !important;
-  margin-top: 6vh;
-  margin-bottom: 6vh;
-  border-radius: 12px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  border: none;
-} */
+
 
 .custom-offcanvas-width {
   width: 850px !important;
   height: 90vh !important;
   margin: 5vh auto;
   border-radius: 16px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  overflow: hidden;
   border: none;
   background-color: white;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
 }
-/* .offcanvas-header {
-  background-color: #457a48;
-  color: white;
-} */
+
+.offcanvas-body {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.offcanvas-footer {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  z-index: 10;
+  border-top: 1px solid #dee2e6;
+}
+
+.task-list-container {
+  transition: all 0.3s ease;
+}
+
+.task-item:hover {
+  background-color: #e8f5e9;
+  cursor: pointer;
+}
 
 .btn-close {
   filter: invert(1);
   opacity: 0.8;
-}
-
-.form-control:focus,
-.form-select:focus {
-  border-color: #457a48;
-  box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
-}
-
-.btn-warning {
-  background-color: #6c63ff;
-  border: none;
-  color: white;
-}
-
-.btn-warning:hover {
-  background-color: #5a52d6;
-}
-
-.form-check-input:checked {
-  background-color: #6c63ff;
-  border-color: #6c63ff;
-}
-
-
-
-.btn-primary {
-  background-color: #6c63ff;
-  border-color: #6c63ff;
-}
-
-.btn-primary:hover {
-  background-color: #5a52d6;
 }
 
 /* Grind offcanvas */
@@ -258,26 +228,31 @@ body {
   background: #457a48;
   color: white;
 }
-
-.summary-box {
-  background-color: #f3f4f6; /* light gray background */
-  border-radius: 8px; /* slightly reduced for minimal style */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  padding: 1rem 1.25rem;
-  transition: transform 0.2s ease;
+.mini-stats {
+  height: 40px; /* ~1.5cm */
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
 }
 
-.summary-box:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(69, 122, 72, 0.15); /* green soft glow */
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.summary-box .number {
-  font-size: 1.4rem;
+.label {
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.value {
   font-weight: 700;
-  margin-top: 0.4rem;
-  color: #457a48;
 }
+
 
 .nav-tabs {
   justify-content: center;

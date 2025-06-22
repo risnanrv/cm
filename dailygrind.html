@@ -76,6 +76,11 @@
               >
                 DEPIN
               </button>
+               <button
+                class="tag-btn px-4 py-2 me-2 mb-2 fw-medium text-black bg-white"
+              >
+                Completed
+              </button>
             </div>
           </div>
 
@@ -325,219 +330,137 @@
       </div>
     </section>
 
-    <!-- Add Grind Offcanvas -->
-    <div
-      class="offcanvas offcanvas-end custom-offcanvas-width"
-      tabindex="-1"
-      id="addGrindSidebar"
-    >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title">Add New Grind</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
-      </div>
+ <div class="offcanvas offcanvas-end custom-offcanvas-width" tabindex="-1" id="addGrindSidebar">
+  <div class="offcanvas-header border-bottom">
+    <h5 class="offcanvas-title">Add New Grind</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
 
-      <form class="d-flex flex-column h-100">
-        <div class="offcanvas-body bg-light">
-          <div class="row g-3">
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label for="projectName" class="form-label fw-medium small"
-                  >Project Name</label
-                >
-                <input
-                  type="text"
-                  class="form-control rounded-2"
-                  id="projectName"
-                  placeholder="Enter project name"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="timeRequired" class="form-label fw-medium small"
-                  >Total Time Required</label
-                >
-                <select class="form-select rounded-2" id="timeRequired">
-                  <option selected>Select time</option>
-                  <option value="1">5 minutes</option>
-                  <option value="2">10 minutes</option>
-                  <option value="3">15 minutes</option>
-                  <option value="4">25 minutes</option>
-                </select>
-              </div>
-              <div class="mb-3">
-                <label for="category" class="form-label fw-medium small"
-                  >Category</label
-                >
-                <select class="form-select rounded-2" id="category">
-                  <option selected>Select category</option>
-                  <option value="work">DEFI</option>
-                  <option value="personal">Mainnet</option>
-                  <option value="learning">Layer 1</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div class="radio-group p-3 mb-3">
-                <label class="form-label fw-medium small d-block mb-2"
-                  >Grind Type</label
-                >
-                <div class="form-check mb-2">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="grindType"
-                    id="dailyGrind"
-                    checked
-                  />
-                  <label class="form-check-label small" for="dailyGrind"
-                    >Daily Grind</label
-                  >
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="grindType"
-                    id="oneTimeGrind"
-                  />
-                  <label class="form-check-label small" for="oneTimeGrind"
-                    >One Time Grind</label
-                  >
-                </div>
-
-                <div
-                  class="offcanvas-footer d-flex justify-content-start mt-4"
-                  style="gap: 10px"
-                >
-                  <button
-                    type="button"
-                    class="gm-btn px-4 py-2 fw-bold text-white"
-                    data-bs-dismiss="offcanvas"
-                  >
-                    Cancel
-                  </button>
-
-                  <button
-                    type="submit"
-                    class="add-btn px-4 py-2 fw-bold text-white"
-                  >
-                    Create Grind
-                  </button>
-                </div>
-              </div>
+  <form class="d-flex flex-column h-100">
+    
+    <!-- Scrollable Body -->
+    <div class="offcanvas-body flex-grow-1 bg-light">
+      <div class="row g-3">
+        <!-- Left Column -->
+        <div class="col-md-6 d-flex flex-column">
+          <div class="bg-white rounded-3 shadow-sm p-3 h-100">
+            <div class="mb-3">
+              <label for="projectName" class="form-label fw-medium small">Project Name</label>
+              <input type="text" class="form-control rounded-2" id="projectName" placeholder="Project name" />
             </div>
-
-            <div class="col-md-6">
-              <div class="task-section p-3">
-                <label class="form-label fw-medium small">Add Tasks</label>
-                <div class="mb-2">
-                  <input
-                    type="text"
-                    class="form-control rounded-2"
-                    placeholder="Task description"
-                  />
-                </div>
-                <div class="mb-2">
-                  <input
-                    type="text"
-                    class="form-control rounded-2"
-                    placeholder="Task URL (optional)"
-                  />
-                </div>
-                <button
-                  type="button"
-                  class="gm-btn px-4 py-2 fw-bold text-white w-100"
-                >
-                  <i class="fas fa-plus me-2"></i>Add New Task
-                </button>
-
-                <!-- Task List Display -->
-                <div class="mt-3">
-                  <div class="d-flex flex-column gap-2">
-                    <!-- Example Task -->
-                    <div
-                      class="d-flex justify-content-between align-items-center bg-light p-1 rounded"
-                    >
-                      <div
-                        class="text-truncate"
-                        style="width: 65%; font-size: 14px"
-                      >
-                        Swap Tokens
-                      </div>
-                      <div class="d-flex gap-2">
-                        <button class="btn text-primary btn-sm">U</button>
-                        <button class="btn text-danger btn-sm">D</button>
-                      </div>
-                    </div>
-
-                    <!-- Repeat up to 5 tasks -->
-                    <div
-                      class="d-flex justify-content-between align-items-center bg-light p-1 rounded"
-                    >
-                      <div
-                        class="text-truncate"
-                        style="width: 65%; font-size: 14px"
-                      >
-                        Add Liquidity
-                      </div>
-                      <div class="d-flex gap-2">
-                        <button class="btn text-primary btn-sm">U</button>
-                        <button class="btn text-danger btn-sm">D</button>
-                      </div>
-                    </div>
-                    <div
-                      class="d-flex justify-content-between align-items-center bg-light p-1 rounded"
-                    >
-                      <div
-                        class="text-truncate"
-                        style="width: 65%; font-size: 14px"
-                      >
-                        Galxe quest
-                      </div>
-                      <div class="d-flex gap-2">
-                        <button class="btn text-primary btn-sm">U</button>
-                        <button class="btn text-danger btn-sm">D</button>
-                      </div>
-                    </div>
-                    <div
-                      class="d-flex justify-content-between align-items-center bg-light p-1 rounded"
-                    >
-                      <div
-                        class="text-truncate"
-                        style="width: 65%; font-size: 14px"
-                      >
-                        Incentivise tokens
-                      </div>
-                      <div class="d-flex gap-2">
-                        <button class="btn text-primary btn-sm">U</button>
-                        <button class="btn text-danger btn-sm">D</button>
-                      </div>
-                    </div>
-                    <div
-                      class="d-flex justify-content-between align-items-center bg-light p-1 rounded"
-                    >
-                      <div
-                        class="text-truncate"
-                        style="width: 65%; font-size: 14px"
-                      >
-                        Claim Faucet
-                      </div>
-                      <div class="d-flex gap-2">
-                        <button class="btn text-primary btn-sm">U</button>
-                        <button class="btn text-danger btn-sm">D</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="mb-3">
+              <label for="timeRequired" class="form-label fw-medium small">Total Time Required</label>
+              <select class="form-select rounded-2" id="timeRequired">
+                <option selected>Select time</option>
+                <option value="1">5 minutes</option>
+                <option value="2">10 minutes</option>
+                <option value="3">15 minutes</option>
+                <option value="4">25 minutes</option>
+              </select>
+            </div>
+            <div>
+              <label for="category" class="form-label fw-medium small">Category</label>
+              <select class="form-select rounded-2" id="category">
+                <option selected>Select category</option>
+                <option value="work">DEFI</option>
+                <option value="personal">Mainnet</option>
+                <option value="learning">Layer 1</option>
+                <option value="other">Other</option>
+              </select>
             </div>
           </div>
         </div>
-      </form>
+
+        <!-- Right Column -->
+      <div class="col-md-6 d-flex flex-column">
+  <div class="task-section bg-white rounded-3 shadow-sm p-3 h-100">
+    <label class="form-label fw-medium small mb-3">Add Grind</label>
+    <input type="text" class="form-control rounded-2 mb-3" placeholder="Task Title" />
+    <input type="text" class="form-control rounded-2 mb-3" placeholder="Task URL " />
+
+    <div class="button-group mb-4">
+      <label class="form-label fw-medium small d-block mb-2">Grind Type</label>
+      <div class="d-flex gap-2">
+        <button type="button" class="btn btn-sm grind-btn active" data-grind-type="dailyGrind"
+          style="background-color: #457a48; color: white;">Daily Grind</button>
+        <button type="button" class="btn btn-sm grind-btn" data-grind-type="oneTimeGrind"
+          style="background-color: transparent; color: inherit;">One Time Grind</button>
+      </div>
+      <input type="hidden" name="grindType" id="grindType" value="dailyGrind" />
     </div>
+
+    <!-- Due Date field for One Time Grind -->
+    <div id="dueDateField" class="mb-3" style="display: none;">
+      <label class="form-label fw-medium small d-block mb-2">Due Date</label>
+      <input type="date" class="form-control rounded-2" name="dueDate" />
+    </div>
+
+    <button type="button" class="gm-btn px-4 py-2 fw-bold text-white w-100 rounded-2">
+      <i class="fas fa-plus me-2"></i> Add New Grind
+    </button>
+  </div>
+</div>
+
+      </div>
+
+      <!-- Task List -->
+      <div class="mt-4 d-flex justify-content-center">
+        <div class="task-list-container bg-white shadow-sm p-4 rounded-3 w-100">
+          <label class="form-label fw-medium small mb-3">Added Grinds</label>
+          <div class="d-flex flex-column gap-3">
+            <div class="task-item d-flex justify-content-between align-items-center bg-light p-2 rounded-2 shadow-sm">
+              <div class="text-truncate" style="width: 65%; font-size: 14px;">Daily checkin</div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil"></i></button>
+                <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+              </div>
+            </div>
+
+              <div class="task-item d-flex justify-content-between align-items-center bg-light p-2 rounded-2 shadow-sm">
+              <div class="text-truncate" style="width: 65%; font-size: 14px;">Swap Tokens</div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil"></i></button>
+                <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+              </div>
+            </div>
+
+              <div class="task-item d-flex justify-content-between align-items-center bg-light p-2 rounded-2 shadow-sm">
+              <div class="text-truncate" style="width: 65%; font-size: 14px;">Add liquidity</div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil"></i></button>
+                <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+              </div>
+            </div>
+
+              <div class="task-item d-flex justify-content-between align-items-center bg-light p-2 rounded-2 shadow-sm">
+              <div class="text-truncate" style="width: 65%; font-size: 14px;">Grind discord</div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil"></i></button>
+                <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+              </div>
+            </div>
+
+              <div class="task-item d-flex justify-content-between align-items-center bg-light p-2 rounded-2 shadow-sm">
+              <div class="text-truncate" style="width: 65%; font-size: 14px;">Claim faucet</div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil"></i></button>
+                <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+              </div>
+            </div>
+            <!-- More tasks can go here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fixed Footer -->
+    <div class="offcanvas-footer p-3 bg-white border-top d-flex justify-content-end gap-2">
+      <button type="button" class="gm-btn px-4 py-2 fw-bold text-white" data-bs-dismiss="offcanvas">Cancel</button>
+      <button type="submit" class="add-btn px-4 py-2 fw-bold text-white">Create Grind</button>
+    </div>
+  </form>
+</div>
+
 
     <!-- Grinds Offcanvas -->
 
@@ -549,6 +472,11 @@
       <div class="offcanvas-header">
         <h5 class="offcanvas-title">LayerEdge</h5>
         <div class="d-flex align-items-center gap-2">
+          <div class="text-center " id="addGrindBtnWrapper">
+          <button class="add-btn px-4 py-2 fw-bold text-white" id="addGrindBtn">
+            Add Grind
+          </button>
+        </div>
           <button
             class="btn btn-light rounded-circle border pin-btn"
             style="
@@ -621,27 +549,21 @@
           </li>
         </ul>
 
-        <!-- Summary -->
-        <div class="d-flex justify-content-between mb-4 gap-3">
-          <div
-            class="card card-body summary-box flex-grow-1 text-center shadow-sm border-0"
-          >
-            <div>Total Tasks</div>
-            <div class="number">6</div>
-          </div>
-          <div
-            class="card card-body summary-box flex-grow-1 text-center shadow-sm border-0"
-          >
-            <div>Completed</div>
-            <div class="number text-success">4</div>
-          </div>
-          <div
-            class="card card-body summary-box flex-grow-1 text-center shadow-sm border-0"
-          >
-            <div>Pending</div>
-            <div class="number text-warning">2</div>
-          </div>
-        </div>
+<div class="mini-stats d-flex justify-content-between align-items-center px-3 py-2 mb-4">
+  <div class="stat text-dark">
+    <span class="label">Total:</span>
+    <span class="value">6</span>
+  </div>
+  <div class="stat text-success">
+    <span class="label">Completed:</span>
+    <span class="value">4</span>
+  </div>
+  <div class="stat text-warning">
+    <span class="label">Pending:</span>
+    <span class="value">2</span>
+  </div>
+</div>
+
 
         <!-- Tab Content -->
         <div class="tab-content" id="grindTabContent">
@@ -781,53 +703,32 @@
         </div>
 
         <!-- Add Grind Button -->
-        <div class="text-center mb-3" id="addGrindBtnWrapper">
-          <button class="add-btn px-4 py-2 fw-bold text-white" id="addGrindBtn">
-            Add Grind
-          </button>
-        </div>
+        
 
-        <!-- Add Grind Form -->
-        <div class="col-md-8 mx-auto d-none" id="addGrindForm">
-          <div class="task-section p-4">
-            <div class="mb-3">
-              <input
-                type="text"
-                class="form-control rounded-2 shadow-sm"
-                id="taskDescription"
-                placeholder="Task description"
-                required
-              />
-            </div>
-
-            <div class="mb-3">
-              <input
-                type="url"
-                class="form-control rounded-2 shadow-sm"
-                id="taskURL"
-                placeholder="Task URL (optional)"
-              />
-            </div>
-
-            <div
-              class="offcanvas-footer d-flex justify-content-center mt-4"
-              style="gap: 10px"
-            >
-              <button
-                type="button"
-                class="gm-btn px-4 py-2 fw-bold text-white"
-                id="cancelGrindBtn"
-              >
-                Cancel
-              </button>
-
-              <button
-                type="submit"
-                class="add-btn px-4 py-2 fw-bold text-white"
-                id="submitGrindBtn"
-              >
-                Add Grind
-              </button>
+        <!-- Main Add Grind Form (centered, floating) -->
+        <div class="d-flex justify-content-center">
+          <div class="col-md-8 d-flex flex-column d-none" id="addGrindForm" style="max-width: 600px; min-width: 400px;">
+            <div class="task-section bg-white rounded-3 shadow-sm p-3 h-100">
+              <label class="form-label fw-medium small mb-3">Add Grind</label>
+              <input type="text" class="form-control rounded-2 mb-3" placeholder="Task Title" />
+              <input type="text" class="form-control rounded-2 mb-3" placeholder="Task URL " />
+              <div class="button-group mb-4">
+                <label class="form-label fw-medium small d-block mb-2">Grind Type</label>
+                <select class="form-select rounded-2 mb-3" id="grindTypeSelectMain" style="width: 100%;">
+                  <option value="dailyGrind" selected>Daily Grind</option>
+                  <option value="oneTimeGrind">One Time Grind</option>
+                </select>
+                <input type="hidden" name="grindType" id="grindTypeMain" value="dailyGrind" />
+              </div>
+              <!-- Due Date field for One Time Grind -->
+              <div id="dueDateFieldMain" class="mb-3" style="display: none;">
+                <label class="form-label fw-medium small d-block mb-2">Due Date</label>
+                <input type="date" class="form-control rounded-2" name="dueDate" />
+              </div>
+              <div class="d-flex justify-content-center mt-4" style="gap: 10px">
+                <button type="button" class="gm-btn px-4 py-2 fw-bold text-white" id="cancelGrindBtn">Cancel</button>
+                <button type="submit" class="add-btn px-4 py-2 fw-bold text-white" id="submitGrindBtn">Add Grind</button>
+              </div>
             </div>
           </div>
         </div>
@@ -928,5 +829,26 @@
           document.getElementById("navbar").innerHTML = data;
         });
     </script>
+    
+<script>
+  // Grind type dropdown logic for sidebar
+  function setupGrindTypeDropdown(selectId, inputId, dueDateId) {
+    const select = document.getElementById(selectId);
+    const input = document.getElementById(inputId);
+    const dueDate = document.getElementById(dueDateId);
+    if (select && input && dueDate) {
+      select.addEventListener('change', function() {
+        input.value = this.value;
+        if (this.value === 'oneTimeGrind') {
+          dueDate.style.display = 'block';
+        } else {
+          dueDate.style.display = 'none';
+        }
+      });
+    }
+  }
+  setupGrindTypeDropdown('grindTypeSelectSidebar', 'grindTypeSidebar', 'dueDateFieldSidebar');
+  setupGrindTypeDropdown('grindTypeSelectMain', 'grindTypeMain', 'dueDateFieldMain');
+</script>
   </body>
 </html>
